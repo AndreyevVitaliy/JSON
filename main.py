@@ -8,10 +8,10 @@ def Load_JSON_File_In_List(json_file, type_file):
             new_file_data = json.load(news_file)
             for item_list in new_file_data['rss']['channel']['items']:
                 temp_list_news = item_list['description'].split()
-                # list_news += temp_list_news
+                list_news += temp_list_news
                 # pprint(item_list['description'])
 
-                return temp_list_news
+            return list_news
 
     else:
         pass
