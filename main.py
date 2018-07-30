@@ -13,7 +13,6 @@ def load_json_file_in_list(json_file):
                 for item_list in new_file_data['rss']['channel']['items']:
                     temp_list_news = item_list['description'].split()
                     list_news += temp_list_news
-                    # pprint(item_list['description'])
         except:
             continue
 
