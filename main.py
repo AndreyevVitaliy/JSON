@@ -3,14 +3,21 @@ import json
 
 def load_json_file_in_list(json_file):
     list_news = []
-    with open(json_file, 'r', encoding='utf-8') as news_file:
-        new_file_data = json.load(news_file)
-        for item_list in new_file_data['rss']['channel']['items']:
-            temp_list_news = item_list['description'].split()
-            list_news += temp_list_news
-            # pprint(item_list['description'])
+    encoding_page_list = ["ascii", "utf-8", "cp1251"]
 
-        return list_news
+    for encoding_page in encoding_page_list:
+        print(encoding_page)
+        try:
+            with open(json_file, 'r', encoding=encoding_page) as news_file:
+                new_file_data = json.load(news_file)
+                for item_list in new_file_data['rss']['channel']['items']:
+                    temp_list_news = item_list['description'].split()
+                    list_news += temp_list_news
+                    # pprint(item_list['description'])
+        except:
+            continue
+
+    return list_news
 
 
 def frequency_count_word(name_file):
